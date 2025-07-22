@@ -1,0 +1,105 @@
+body {
+  background: url(../../../assests/images/Doctor.jpg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: auto;
+}
+
+.card-title {
+  text-align: center;
+  color: #0d47a1;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #ccc;
+}
+
+.add-btn {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 114, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.add-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 114, 255, 0.4);
+}
+
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-table thead {
+  background: linear-gradient(to right, #1976d2, #00acc1);
+  color: #ffffff;
+}
+
+.doctor-table th,
+.doctor-table td {
+  padding: 16px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.doctor-table tbody tr:nth-child(odd) {
+  background-color: #f0f8ff;
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0 6px;
+}
+
+.icon-btn.edit {
+  background: linear-gradient(to right, #ff9800, #ffb74d);
+  color: #212121;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.icon-btn.edit:hover {
+  background: linear-gradient(to right, #fb8c00, #ffa726);
+}
+
+.icon-btn.delete {
+  background: linear-gradient(to right, #ef5350, #e53935);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.icon-btn.delete:hover {
+  background: linear-gradient(to right, #d32f2f, #c62828);
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 24px;
+  color: #666;
+  font-size: 1.1rem;
+}

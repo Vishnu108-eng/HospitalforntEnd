@@ -1,0 +1,175 @@
+/* Form row: label on left, input on right */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.form-row label {
+  flex: 0 0 130px; /* fixed width for label */
+  text-align: left;
+  font-weight: 400;
+  color: #444;
+  user-select: none;
+}
+
+.form-row .input-text,
+.form-row .input-select {
+  flex: 1 1 auto;
+  width: auto; /* override width 100% */
+}
+
+/* Phone container for country code and phone number */
+.phone-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+}
+
+/* Country code dropdown width */
+.country-code-select {
+  flex: 0 0 90px; /* Fixed width for country code dropdown */
+  position: relative;
+}
+
+/* Custom dropdown styles */
+.custom-select {
+  position: relative;
+}
+
+.selected-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.selected-option:hover,
+.selected-option:focus {
+  border-color: #3f5efb;
+  box-shadow: 0 0 8px rgba(63, 94, 251, 0.2);
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: rgba(63, 94, 251, 0.1);
+}
+
+/* Adjust flag icon for dropdown */
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* Card styles */
+.card {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto 0 auto;
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #fc466b, #3f5efb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Input and select styles */
+.input-text,
+.input-select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  background: #fff;
+}
+
+.input-text:focus,
+.input-select:focus {
+  border-color: #3f5efb;
+  box-shadow: 0 0 8px rgba(63, 94, 251, 0.2);
+}
+
+/* Placeholder color */
+.input-text::placeholder,
+.input-select option:disabled {
+  color: #aaa;
+}
+
+/* Submit button */
+button[type="submit"] {
+  background: linear-gradient(to right, #3f5efb, #fc466b);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #fc466b, #3f5efb);
+}
+
+button[type="submit"][disabled] {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error messages */
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: block;
+  margin-left: 145px; /* Align with input fields */
+}

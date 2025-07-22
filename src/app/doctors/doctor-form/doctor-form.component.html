@@ -1,0 +1,69 @@
+<div class="doctor-form-card">
+  <h2>{{ isEditMode ? 'Edit Doctor' : 'Add Doctor' }}</h2>
+  <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input id="fullName" type="text" formControlName="fullName" />
+      <div class="error" *ngIf="(doctorForm.get('fullName')?.touched || submitted) && doctorForm.get('fullName')?.hasError('required')">Full name is required</div>
+      <div class="error" *ngIf="(doctorForm.get('fullName')?.touched || submitted) && doctorForm.get('fullName')?.hasError('maxlength')">Full name cannot exceed 100 characters</div>
+    </div>
+
+    <div class="form-group">
+      <label for="specialization">Specialization</label>
+      <input id="specialization" type="text" formControlName="specialization" />
+      <div class="error" *ngIf="(doctorForm.get('specialization')?.touched || submitted) && doctorForm.get('specialization')?.hasError('required')">Specialization is required</div>
+      <div class="error" *ngIf="(doctorForm.get('specialization')?.touched || submitted) && doctorForm.get('specialization')?.hasError('maxlength')">Specialization cannot exceed 100 characters</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      <div class="error" *ngIf="(doctorForm.get('email')?.touched || submitted) && doctorForm.get('email')?.hasError('required')">Email is required</div>
+      <div class="error" *ngIf="(doctorForm.get('email')?.touched || submitted) && doctorForm.get('email')?.hasError('email')">Invalid email</div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="countryCode">Country Code</label>
+        <div class="country-select-wrapper">
+          <select id="countryCode" formControlName="countryCode" (change)="updatePhoneValidator()">
+            <option *ngFor="let country of countries" [value]="country.code">
+              <img [src]="country.flag" [alt]="country.name + ' flag'" class="flag-icon" /> {{ country.code }}
+            </option>
+          </select>
+          <img [src]="selectedCountryFlag" [alt]="selectedCountryName + ' flag'" class="flag-icon selected-flag" *ngIf="selectedCountryFlag" />
+        </div>
+        <div class="error" *ngIf="(doctorForm.get('countryCode')?.touched || submitted) && doctorForm.get('countryCode')?.hasError('required')">Country Code is required</div>
+      </div>
+      <div class="form-group half-width">
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber" (input)="formatPhoneNumber()" />
+        <div class="error" *ngIf="(doctorForm.get('phoneNumber')?.touched || submitted) && doctorForm.get('phoneNumber')?.hasError('required')"> Phone Number is required</div>
+        <div class="error" *ngIf="(doctorForm.get('phoneNumber')?.touched || submitted) && doctorForm.get('phoneNumber')?.hasError('pattern')">Phone Number must be 10 digits</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender">
+        <option value="">-- Select --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <div class="error" *ngIf="(doctorForm.get('gender')?.touched || submitted) && doctorForm.get('gender')?.hasError('required')">Gender is required</div>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" formControlName="isAvailable" id="availableCheck" />
+      <label for="availableCheck">Available</label>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-success">Add Doctor</button>
+      <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

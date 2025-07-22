@@ -1,0 +1,90 @@
+<div class="card">
+  <h2 class="card-title">Book Appointment</h2>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <div class="form-row">
+      <label for="doctorId">Doctor</label>
+      <select id="doctorId" formControlName="doctorId" class="input-select">
+        <option value="" disabled selected>-- Select Doctor --</option>
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">
+          {{ doctor.fullName }} ({{ doctor.specialization }})
+        </option>
+      </select>
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('doctorId')?.touched && appointmentForm.get('doctorId')?.hasError('required')">
+      Doctor is required
+    </div>
+    
+    <div class="form-row">
+      <label for="patientName">Patient Name</label>
+      <input id="patientName" type="text" formControlName="patientName" class="input-text" placeholder="Enter your name" />
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('patientName')?.touched">
+      <div *ngIf="appointmentForm.get('patientName')?.hasError('required')">Patient Name is required</div>
+      <div *ngIf="appointmentForm.get('patientName')?.hasError('minlength') && !appointmentForm.get('patientName')?.hasError('required')">
+        Patient Name must be at least 3 characters
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label for="patientEmail">Email</label>
+      <input id="patientEmail" type="email" formControlName="patientEmail" class="input-text" placeholder="Enter your email" />
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('patientEmail')?.touched">
+      <div *ngIf="appointmentForm.get('patientEmail')?.hasError('required')">Patient Email is required</div>
+      <div *ngIf="appointmentForm.get('patientEmail')?.hasError('email') && !appointmentForm.get('patientEmail')?.hasError('required')">
+        Invalid email format
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label for="countryCode">Phone</label>
+      <div class="phone-container">
+        <div class="custom-select country-code-select">
+          <div class="selected-option" (click)="toggleDropdown()">
+            <img *ngIf="selectedCountry" [src]="selectedCountry.flag" alt="{{ selectedCountry.name }} flag" class="flag-icon" />
+            <span>{{ selectedCountry ? selectedCountry.code : '+91' }}</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="options" *ngIf="isDropdownOpen">
+            <div *ngFor="let country of countries" class="option" (click)="selectCountry(country)">
+              <img [src]="country.flag" alt="{{ country.name }} flag" class="flag-icon" />
+              {{ country.code }}
+            </div>
+          </div>
+        </div>
+        <input id="phoneNumber" type="tel" formControlName="phoneNumber" (input)="formatPhoneNumber()" class="input-text" placeholder="Enter Phone Number" />
+      </div>
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('countryCode')?.touched && appointmentForm.get('countryCode')?.hasError('required')">
+      Country Code is required
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('phoneNumber')?.touched">
+      <div *ngIf="appointmentForm.get('phoneNumber')?.hasError('required')">Phone Number is required</div>
+      <div *ngIf="appointmentForm.get('phoneNumber')?.hasError('pattern') && !appointmentForm.get('phoneNumber')?.hasError('required')">
+        Phone Number must be 10 digits
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label for="appointmentDate">Appointment Date</label>
+      <input id="appointmentDate" type="date" formControlName="appointmentDate" class="input-text" />
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('appointmentDate')?.touched && appointmentForm.get('appointmentDate')?.hasError('required')">
+      Appointment Date is required
+    </div>
+    
+    <div class="form-row">
+      <label for="appointmentTime">Time Slot</label>
+      <input id="appointmentTime" type="text" formControlName="appointmentTime" class="input-text" placeholder="e.g., 10:00 AM to 10:30 AM" />
+    </div>
+    <div class="error" *ngIf="appointmentForm.get('appointmentTime')?.touched">
+      <div *ngIf="appointmentForm.get('appointmentTime')?.hasError('required')">Appointment Time is required</div>
+      <div *ngIf="appointmentForm.get('appointmentTime')?.hasError('pattern') && !appointmentForm.get('appointmentTime')?.hasError('required')">
+        Invalid time format (e.g., 10:00 AM to 10:30 AM)
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="appointmentForm.invalid" class="btn-submit">Book</button>
+  </form>
+</div>

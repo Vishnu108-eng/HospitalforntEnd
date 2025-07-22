@@ -1,0 +1,131 @@
+body {
+    background: url('/images/Invoice.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.invoice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    width: 90%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+    color: #fff;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 0;
+    color: #004d40;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary.btn-add {
+    background: linear-gradient(to right, #00c853, #64dd17);
+    border: none;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary.btn-add:hover {
+    background: linear-gradient(to right, #00bfa5, #00e5ff);
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.invoice-table thead {
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.invoice-table th,
+.invoice-table td {
+    padding: 16px 18px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.invoice-table tbody tr:nth-child(even) {
+    background-color: #f1f8e9;
+}
+
+.invoice-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.invoice-table tbody tr:hover {
+    background-color: #e1f5fe;
+    cursor: pointer;
+}
+
+.btn-info.btn-sm {
+    background-color: #00838f;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-info.btn-sm:hover {
+    background-color: #006064;
+    transform: scale(1.05);
+}
+
+.error-message {
+    text-align: center;
+    color: #d32f2f;
+    font-size: 1.2em;
+    padding: 20px;
+    font-weight: 500;
+}
+
+.no-invoices {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+    color: #333;
+    font-weight: 500;
+}

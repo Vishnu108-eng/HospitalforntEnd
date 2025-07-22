@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <h2>My Prescriptions</h2>
+    <button class="btn-primary" (click)="navigateToAddPrescription()">Add Prescription</button>
+  </div>
+
+  <div class="card-content">
+    <table class="prescription-table" *ngIf="prescriptions.length > 0">
+      <thead>
+        <tr>
+          <th class="left-align">Patient</th>
+          <th class="left-align">Doctor</th>
+          <th class="left-align">Date</th>
+          <th class="left-align">PDF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prescription of prescriptions">
+          <td class="left-align">{{ prescription.patientName || 'N/A' }}</td>
+          <td class="left-align">{{ prescription.doctorName || 'N/A' }}</td>
+          <td class="left-align">{{ prescription.createdAt | date:'dd-MM-yyyy' }}</td>
+          <td class="left-align">
+            <button class="btn-info" (click)="downloadPrescription(prescription.id)">Download PDF</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="prescriptions.length === 0" class="no-data">
+      No prescriptions found.
+    </div>
+  </div>
+</div>

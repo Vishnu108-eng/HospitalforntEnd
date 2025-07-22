@@ -1,0 +1,72 @@
+<div class="card">
+  <div class="card-header">
+    <h2>My OP Forms</h2>
+    <button class="btn-primary btn-add" (click)="navigateToAddOPForm()">Add OP Form</button>
+  </div>
+  <div class="card-content">
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+    <div *ngIf="errorMessage && !isLoading" class="error">{{ errorMessage }}</div>
+
+    <table *ngIf="!isLoading && !errorMessage && opForms.length > 0" class="op-table">
+      <thead>
+        <tr>
+          <th>Patient</th>
+          <th>Doctor</th>
+          <th>Date</th>
+          <th>Symptoms</th>
+          <th>Diagnosis</th>
+          <th>Treatment</th>
+          <th>Prescription</th>
+          <th>Invoice</th>
+          <th>PDF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let opForm of opForms; trackBy: trackByOpFormId">
+          <td>{{ opForm.appointment?.patientName || 'N/A' }}</td>
+          <td>{{ opForm.appointment?.doctor?.fullName || 'N/A' }}</td>
+          <td>{{ opForm.createdAt | date:'dd-MM-yyyy' }}</td>
+          <td>{{ opForm.symptoms | slice:0:50 }}...</td>
+          <td>{{ opForm.diagnosis | slice:0:50 }}...</td>
+          <td>{{ opForm.treatment | slice:0:50 }}...</td>
+          <td>
+            <button
+              *ngIf="opForm.prescriptionId"
+              class="btn btn-info btn-sm"
+              (click)="downloadPrescription(opForm.prescriptionId)"
+              [disabled]="isLoading"
+            >
+              Download
+            </button>
+            <span *ngIf="!opForm.prescriptionId">N/A</span>
+          </td>
+          <td>
+            <button
+              *ngIf="opForm.invoiceId"
+              class="btn btn-info btn-sm"
+              (click)="downloadInvoice(opForm.invoiceId)"
+              [disabled]="isLoading"
+            >
+              Download
+            </button>
+            <span *ngIf="!opForm.invoiceId">N/A</span>
+          </td>
+          <td>
+            <button
+              *ngIf="opForm.id !== undefined"
+              class="btn btn-info btn-sm"
+              (click)="downloadOPForm(opForm.id)"
+              [disabled]="isLoading"
+            >
+              Download PDF
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!isLoading && !errorMessage && opForms.length === 0" class="no-data">
+      No OP Forms available.
+    </div>
+  </div>
+</div>

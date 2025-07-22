@@ -1,0 +1,53 @@
+<div class="card">
+  <h2 class="card-title">Add Prescription</h2>
+  <form [formGroup]="prescriptionForm" (ngSubmit)="onSubmit()" class="prescription-form">
+    <div class="form-group">
+      <label for="appointmentId">Select Appointment</label>
+      <select id="appointmentId" formControlName="appointmentId" class="form-control">
+        <option value="" disabled selected>Select an appointment</option>
+        <option *ngFor="let appointment of (appointments$ | async)" [value]="appointment.id">
+          {{ appointment.patientName }} - {{ appointment.appointmentDate | date:'shortDate' }} {{ appointment.appointmentTime }} ({{ appointment.doctor?.fullName || 'Unknown Doctor' }})
+        </option>
+      </select>
+      <div class="error" *ngIf="prescriptionForm.get('appointmentId')?.hasError('required') && prescriptionForm.get('appointmentId')?.touched">
+        Appointment is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="medication">Medication</label>
+      <input id="medication" type="text" formControlName="medication" class="form-control" />
+      <div class="error" *ngIf="prescriptionForm.get('medication')?.hasError('required') && prescriptionForm.get('medication')?.touched">
+        Medication is required.
+      </div>
+      <div class="error" *ngIf="prescriptionForm.get('medication')?.hasError('maxlength') && prescriptionForm.get('medication')?.touched">
+        Medication must not exceed 500 characters.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <textarea id="instructions" formControlName="instructions" class="form-control"></textarea>
+      <div class="error" *ngIf="prescriptionForm.get('instructions')?.hasError('required') && prescriptionForm.get('instructions')?.touched">
+        Instructions are required.
+      </div>
+      <div class="error" *ngIf="prescriptionForm.get('instructions')?.hasError('maxlength') && prescriptionForm.get('instructions')?.touched">
+        Instructions must not exceed 1000 characters.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" class="form-control"></textarea>
+      <div class="error" *ngIf="prescriptionForm.get('description')?.hasError('maxlength') && prescriptionForm.get('description')?.touched">
+        Description must not exceed 500 characters.
+      </div>
+    </div>
+
+    <div class="button-wrapper">
+      <button type="submit" [disabled]="prescriptionForm.invalid" class="btn-submit">
+        💾 Save & Generate PDF
+      </button>
+    </div>
+  </form>
+</div>

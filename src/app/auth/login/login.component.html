@@ -1,0 +1,91 @@
+<div class="login-container">
+  <div class="card">
+    <!-- <button type="button" class="custom-close-btn" aria-label="Close" routerLink="/home">
+      <span aria-hidden="true">×</span>
+    </button> -->
+    <div class="card-header">
+      <h2 class="card-title text-gradient">Login</h2>
+    </div>
+    <div class="card-content">
+      <div *ngIf="successMessage" class="success-message alert alert-success">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="error-message alert alert-danger custom-error-font-size">
+        {{ errorMessage }}
+      </div>
+      
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Email Field -->
+        <div class="form-field-horizontal">
+          <label for="email" class="form-label text-muted">Email</label>
+          <div class="form-input-wrapper">
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="Enter your email"
+            />
+            <div class="error-message" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+              Email is required
+            </div>
+            <div class="error-message" *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+              Invalid email
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <!-- Password Field -->
+        <div class="form-field-horizontal">
+          <label for="password" class="form-label text-muted">Password</label>
+          <div class="form-input-wrapper">
+            <div class="input-group">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Enter your password"
+              />
+              <button type="button" class="toggle-button" (click)="togglePasswordVisibility()">
+                {{ showPassword ? '🙈' : '👁️' }}
+              </button>
+            </div>
+            <div class="error-message" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+              Password is required
+            </div>
+            <div class="checkbox mt-2">
+              <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility()" />
+              <label for="showPassword" class="form-check-label">Show Password</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="checkbox-group">
+          <div class="checkbox">
+            <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
+            <label for="rememberMe" class="form-check-label text-muted">Remember Me</label>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="login-button btn-gradient w-100">
+          Login
+        </button>
+      </form>
+
+      <!-- Links -->
+      <div class="links mt-3">
+        <a routerLink="/forgot-password" class="text-decoration-none text-primary">Forgot Password?</a>
+        <br/><br/>
+        <div class="mt-2">
+          <span class="fs-5">Don't have an account?</span>
+          <a routerLink="/register" class="text-decoration-none text-danger fs-5">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

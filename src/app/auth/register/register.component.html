@@ -1,0 +1,121 @@
+<div class="card register-card">
+  <div class="card-header text-center">
+    <h2 class="card-title">Register</h2>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName" placeholder="Enter full name" />
+      </div>
+      <div class="text-danger" *ngIf="registerForm.get('fullName')?.hasError('required') && registerForm.get('fullName')?.touched">Full name is required</div>
+      <div class="text-danger" *ngIf="registerForm.get('fullName')?.hasError('maxlength') && registerForm.get('fullName')?.touched">Full name cannot exceed 100 characters</div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email" />
+      </div>
+      <div class="text-danger" *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">Email is required</div>
+      <div class="text-danger" *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">Invalid email</div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter password"
+        />
+      </div>
+      <div class="error-message" *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+        Password is required
+      </div>
+      <div class="error-message" *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">
+        Password must be at least 6 characters
+      </div>
+      <div class="error-message" *ngIf="registerForm.get('password')?.hasError('pattern') && registerForm.get('password')?.touched">
+        Must include uppercase & special character
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirm password"
+        />
+      </div>
+      <div class="error-message" *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+        Confirm password is required
+      </div>
+      <div class="error-message" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+        Passwords do not match
+      </div>
+
+      <!-- Show Password Checkbox -->
+      <div class="form-group checkbox-group">
+        <label for="showPassword" class="form-label">Show Password</label>
+        <input
+          type="checkbox"
+          id="showPassword"
+          [checked]="showPassword"
+          (change)="togglePasswordVisibility()"
+        />
+      </div>
+
+      <!-- Phone -->
+      <div class="phone-container">
+        <div class="form-group">
+          <label for="countryCode" class="form-label">Phone Number</label>
+          <div class="phone-input-wrapper">
+            <div class="country-select-wrapper">
+              <select class="form-select" id="countryCode" formControlName="countryCode" (change)="updatePhoneValidator()">
+                <option *ngFor="let country of countries" [value]="country.code">
+                  {{ country.code }}
+                </option>
+              </select>
+              <img [src]="selectedCountryFlag" [alt]="selectedCountryName + ' flag'" class="flag-icon selected-flag" *ngIf="selectedCountryFlag" />
+            </div>
+            <input type="text" class="form-control phone-number" id="phoneNumber" formControlName="phoneNumber" (input)="formatPhoneNumber()" placeholder="Enter phone number" />
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="registerForm.get('countryCode')?.hasError('required') && registerForm.get('countryCode')?.touched">Country code is required</div>
+        <div class="text-danger" *ngIf="registerForm.get('phoneNumber')?.hasError('required') && registerForm.get('phoneNumber')?.touched">Phone number is required</div>
+        <div class="text-danger" *ngIf="registerForm.get('phoneNumber')?.hasError('pattern') && registerForm.get('phoneNumber')?.touched">Must be 10 digits</div>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" id="gender" formControlName="gender">
+          <option value="">-- Select --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="text-danger" *ngIf="registerForm.get('gender')?.hasError('required') && registerForm.get('gender')?.touched">Gender is required</div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" formControlName="address" placeholder="Enter your address" />
+      </div>
+      <div class="text-danger" *ngIf="registerForm.get('address')?.hasError('required') && registerForm.get('address')?.touched">Address is required</div>
+      <div class="text-danger" *ngIf="registerForm.get('address')?.hasError('maxlength') && registerForm.get('address')?.touched">Max 200 characters</div>
+
+      <!-- Error -->
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-register">Register</button>
+    </form>
+  </div>
+</div>

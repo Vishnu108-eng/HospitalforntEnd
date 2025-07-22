@@ -1,0 +1,120 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.dashboard-container {
+  padding: 0 2rem 2rem; /* Removed top padding */
+  min-height: 91%;
+  width: 102%; /* Ensure full width */
+  box-sizing: border-box; /* Prevent padding from affecting width */
+  background: linear-gradient(to right top, #e0f7fa, #80deea, #26c6da);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 10px 0 10px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 80%;
+}
+
+.dashboard-table {
+  width: 100%;
+  max-width: 420px;
+  min-width: 280px;
+  height: 120px;
+  border-radius: 10px;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dashboard-table:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.dashboard-table td {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.dashboard-table tr:first-child td {
+  font-size: 1.7rem;
+  font-weight: 800;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* VIBGYOR Backgrounds */
+.bg-violet {
+  background: linear-gradient(45deg, #8e24aa, #ce93d8);
+}
+
+.bg-indigo {
+  background: linear-gradient(45deg, #3f51b5, #9fa8da);
+}
+
+.bg-blue {
+  background: linear-gradient(45deg, #2196f3, #90caf9);
+}
+
+.bg-green {
+  background: linear-gradient(45deg, #43a047, #a5d6a7);
+}
+
+.bg-yellow {
+  background: linear-gradient(45deg, #fdd835, #fff59d);
+  color: #333 !important;
+}
+
+.bg-orange {
+  background: linear-gradient(45deg, #fb8c00, #ffcc80);
+  color: #333 !important;
+}
+
+.bg-red {
+  background: linear-gradient(45deg, #e53935, #ef9a9a);
+}
+
+.error-message {
+  color: #ff1744;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #eeeeee;
+  font-style: italic;
+}

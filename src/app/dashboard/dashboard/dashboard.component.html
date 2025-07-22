@@ -1,0 +1,87 @@
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Admin Dashboard</h2>
+  <div class="dashboard-grid">
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="dashboardData; else loading" class="grid-wrapper">
+      <table class="dashboard-table bg-violet">
+        <tbody>
+          <tr>
+            <td>Total Doctors</td>
+            <td>{{ dashboardData.totalDoctors }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-indigo">
+        <tbody>
+          <tr>
+            <td>Total Patients</td>
+            <td>{{ dashboardData.totalPatients }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-blue">
+        <tbody>
+          <tr>
+            <td>Total Appointments</td>
+            <td>{{ dashboardData.totalAppointments }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-yellow">
+        <tbody>
+          <tr>
+            <td>Pending Appointments</td>
+            <td>{{ dashboardData.pendingAppointments }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-green">
+        <tbody>
+          <tr>
+            <td>Completed Appointments</td>
+            <td>{{ dashboardData.completedAppointments }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-orange">
+        <tbody>
+          <tr>
+            <td>Prescriptions</td>
+            <td>{{ dashboardData.totalPrescriptions }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-red">
+        <tbody>
+          <tr>
+            <td>Invoices</td>
+            <td>{{ dashboardData.totalInvoices }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="dashboard-table bg-indigo">
+        <tbody>
+          <tr>
+            <td>OP Forms</td>
+            <td>{{ dashboardData.totalOPForms }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #loading>
+      <p class="loading-message">Loading dashboard data...</p>
+    </ng-template>
+  </div>
+</div>

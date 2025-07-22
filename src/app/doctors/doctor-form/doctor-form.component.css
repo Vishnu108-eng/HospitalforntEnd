@@ -1,0 +1,162 @@
+/* Background + base font */
+body, .doctor-form-card {
+    background: url('/images/Doctor.jpg') no-repeat center center fixed;
+    background-size: 80% 80%;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Card container */
+.doctor-form-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px 50px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+/* Title */
+.doctor-form-card h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #3f5efb;
+}
+
+/* Form groups */
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    flex: 0 0 140px; /* Fixed width label aligned left */
+    font-weight: 600;
+    color: #333;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    flex: 1 1 auto;
+    padding: 6px 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group select:focus {
+    border-color: #ff512f;
+    box-shadow: 0 0 10px rgba(255, 81, 47, 0.2);
+    outline: none;
+}
+
+/* Country select with flag */
+.country-select-wrapper {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.country-select-wrapper select {
+    padding-left: 30px; /* Space for the flag */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M5%207l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E') no-repeat right 10px center;
+    background-size: 12px;
+}
+
+.flag-icon {
+    width: 16px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.selected-flag {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Half width form groups in form-row */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.half-width {
+    flex: 1 1 50%;
+}
+
+/* Checkbox group */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Error messages */
+.error, .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 3px;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-success {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.cancel {
+    flex: 1;
+    background: #ccc;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 12px 18px;
+    transition: background 0.3s ease;
+}
+
+.cancel:hover {
+    background: #999;
+}

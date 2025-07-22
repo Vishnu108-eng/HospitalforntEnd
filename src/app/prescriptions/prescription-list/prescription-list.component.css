@@ -1,0 +1,117 @@
+body {
+    background: url('/images/Prescription.jpg') no-repeat center center fixed;
+    background-size: contain;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #0288d1, #039be5);
+    color: #fff;
+}
+
+.card-header h2 {
+    font-size: 2.4rem;
+    margin: 0;
+    color: #004d40;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #ff5722, #ff7043);
+    border: none;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #d84315, #ff3d00);
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 16px 18px;
+}
+
+.prescription-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prescription-table thead {
+    background: linear-gradient(135deg, #0288d1, #039be5);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.prescription-table th, .prescription-table td {
+    padding: 16px 18px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.prescription-table th.left-align, .prescription-table td.left-align {
+    text-align: left;
+}
+
+.prescription-table tbody tr:nth-child(even) {
+    background-color: #e1f5fe;
+}
+
+.prescription-table tbody tr:nth-child(odd) {
+    background-color: #f3e5f5;
+}
+
+.prescription-table tbody tr:hover {
+    background-color: #b2ebf2;
+    cursor: pointer;
+}
+
+.btn-info {
+    background-color: #8e24aa;
+    border: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #7b1fa2;
+    transform: scale(1.05);
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #666;
+}

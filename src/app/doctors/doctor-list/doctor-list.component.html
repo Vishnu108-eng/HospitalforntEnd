@@ -1,0 +1,43 @@
+<div class="card">
+  <h2 class="card-title">Doctors</h2>
+
+  <button class="add-btn" (click)="addDoctor()">
+    ➕ Add Doctor
+  </button>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="!errorMessage && doctors.length > 0" class="doctor-table">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Specialization</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Gender</th>
+        <th>Available</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctors">
+        <td>{{ doctor.fullName }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>{{ doctor.email }}</td>
+        <td>{{ doctor.phoneNumber }}</td>
+        <td>{{ doctor.gender }}</td>
+        <td>{{ doctor.isAvailable ? 'Yes' : 'No' }}</td>
+        <td class="actions">
+          <button class="icon-btn edit" (click)="editDoctor(doctor.id)">✏️</button>
+          <button class="icon-btn delete" (click)="deleteDoctor(doctor.id)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!errorMessage && doctors.length === 0" class="no-data">
+    No doctors available.
+  </div>
+</div>

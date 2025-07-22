@@ -1,0 +1,195 @@
+/* Login Container */
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    padding: 40px;
+    box-sizing: border-box;
+    min-height: 600px;
+}
+
+/* Card */
+.card {
+    width: 400px;
+    max-width: 500px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: relative;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Close button */
+.custom-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 1.75rem;
+    color: #ff6a00;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    z-index: 2;
+}
+.custom-close-btn:hover {
+    color: #ee0979;
+    transform: scale(1.2);
+}
+
+/* Title gradient */
+.text-gradient {
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Horizontal field layout */
+.form-field-horizontal {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.form-field-horizontal label {
+    width: 100px;
+    margin-top: 0.3rem;
+    font-weight: bold;
+}
+
+.form-input-wrapper {
+    flex: 1;
+}
+
+/* Success and error messages */
+.success-message {
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 0.25rem;
+}
+
+/* Form labels */
+.form-label {
+    font-weight: bold;
+    color: #6c757d;
+}
+
+/* Form controls */
+.form-control {
+    font-weight: bold;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-control:focus {
+    border-color: #ee0979;
+    box-shadow: 0 0 6px rgba(238, 9, 121, 0.5);
+    outline: none;
+}
+
+/* Input group for password + toggle */
+.input-group {
+    display: flex;
+    align-items: center;
+}
+.input-group input.form-control {
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+/* Toggle password button */
+.toggle-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    user-select: none;
+}
+
+/* Checkbox styles */
+.checkbox,
+.checkbox-group {
+    margin-top: 0.75rem;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.form-check-label {
+    font-weight: bold;
+    color: #6c757d;
+}
+
+/* Login button */
+.login-button {
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px 0;
+    transition: background 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+}
+.login-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.login-button:hover:not(:disabled) {
+    background: linear-gradient(to right, #ee0979, #ff6a00);
+}
+
+/* Link styles */
+.links a.text-primary {
+    color: #007bff;
+    text-decoration: none;
+}
+.links a.text-primary:hover {
+    text-decoration: underline;
+}
+.links a.text-danger {
+    color: #dc3545;
+    text-decoration: none;
+}
+.links a.text-danger:hover {
+    text-decoration: underline;
+}
+
+/* Spacing utilities */
+.mt-2 {
+    margin-top: 0.5rem;
+}
+.mt-3 {
+    margin-top: 1rem;
+}
+.fs-5 {
+    font-size: 1.25rem;
+}

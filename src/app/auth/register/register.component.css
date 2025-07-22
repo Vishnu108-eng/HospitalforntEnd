@@ -1,0 +1,169 @@
+.register-card {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 25px 35px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.register-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff0000; /* Red color to match the image */
+  margin: 0;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: 700;
+  color: #333;
+  font-size: 0.9rem;
+  width: 130px;
+  margin-right: 15px;
+  text-align: left;
+}
+
+.form-control {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #66a6ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 166, 255, 0.3);
+}
+
+.text-danger, .error-message {
+  font-size: 0.85rem;
+  color: #e53935;
+  margin-top: 4px;
+  margin-left: 145px;
+}
+
+.btn-register {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+/* Checkbox group */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-left: 145px;
+}
+
+/* Phone container */
+.phone-container .form-group {
+  margin-bottom: 10px;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.country-select-wrapper {
+  position: relative;
+  width: 80px;
+  margin-right: 5px;
+}
+
+.country-select-wrapper select {
+  width: 100%;
+  padding: 8px 20px 8px 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M5%207l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E') no-repeat right 5px center;
+  background-size: 12px;
+}
+
+.country-select-wrapper select:focus {
+  border-color: #66a6ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 166, 255, 0.3);
+}
+
+.flag-icon {
+  width: 16px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.selected-flag {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.phone-number {
+  flex: 1;
+  border-radius: 8px;
+}
+
+/* Select styling */
+select.form-select {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.85rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+select.form-select:focus {
+  border-color: #66a6ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 166, 255, 0.3);
+}
+
+/* Align error messages */
+.phone-container .text-danger {
+  margin-left: 145px;
+}

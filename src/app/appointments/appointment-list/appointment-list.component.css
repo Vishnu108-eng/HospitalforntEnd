@@ -1,0 +1,157 @@
+/* Background Image and Base Styling */
+.appointment-container {
+  background: url(../../../assests/images/Appointment.jpg) no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  min-height: 72.5vh;
+  width: 99%;
+}
+
+/* Heading Styling */
+.heading {
+  color: #ff6f61;
+  margin-bottom: 20px;
+}
+
+/* Filter Form Styling */
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* Label Styling for filter inputs */
+.filter-form label {
+  font-weight: bold;
+  min-width: 140px;
+  color: #444;
+  display: inline-block;
+  margin-right: 8px;
+  text-align: right;
+}
+
+/* Container for each filter input + label */
+.filter-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 1 1 300px; /* Grow to fill but not smaller than 300px */
+  max-width: 380px; /* Max width for inputs */
+}
+
+/* Inputs with increased width */
+.form-control.search-box,
+.form-control.doctor-select,
+.form-control.appointment-date {
+  width: 100%;
+  min-width: 280px;
+  max-width: 400px;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Margin between inputs */
+.form-control {
+  margin-right: 10px;
+}
+
+/* Table Styling */
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.appointments-table th {
+  background-color: #ff6f61;
+  color: white;
+}
+
+.appointments-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.appointments-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Button Styling */
+.btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+/* Button Hover Effects */
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Status Colors */
+.status-confirmed {
+  color: green;
+  font-weight: bold;
+}
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+.status-completed {
+  color: blue;
+  font-weight: bold;
+}
+.status-cancelled {
+  color: red;
+  font-weight: bold;
+}

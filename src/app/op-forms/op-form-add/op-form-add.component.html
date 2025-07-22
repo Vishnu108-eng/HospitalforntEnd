@@ -1,0 +1,106 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Add OP Form</h2>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <form [formGroup]="opForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading" novalidate>
+    <div class="form-row">
+      <label for="appointmentId" class="form-label">Appointment <span class="required">*</span></label>
+      <select id="appointmentId" formControlName="appointmentId" class="form-select" 
+        [class.invalid]="opForm.get('appointmentId')?.invalid && opForm.get('appointmentId')?.touched">
+        <option value="" disabled selected>Select Appointment</option>
+        <option *ngFor="let appointment of appointments" [value]="appointment.id">
+          {{ appointment.id }} - {{ appointment.patientName }} ({{ appointment.appointmentDate | date:'dd-MM-yyyy' }})
+        </option>
+      </select>
+    </div>
+    <div *ngIf="opForm.get('appointmentId')?.hasError('required') && opForm.get('appointmentId')?.touched" class="error-message">
+      Appointment is required
+    </div>
+    <div *ngIf="opForm.get('appointmentId')?.hasError('pattern') && opForm.get('appointmentId')?.touched" class="error-message">
+      Please select a valid appointment
+    </div>
+
+    <div class="form-row">
+      <label for="symptoms" class="form-label">Symptoms <span class="required">*</span></label>
+      <textarea id="symptoms" formControlName="symptoms" rows="4" class="form-textarea" 
+        [class.invalid]="opForm.get('symptoms')?.invalid && opForm.get('symptoms')?.touched"></textarea>
+    </div>
+    <div *ngIf="opForm.get('symptoms')?.hasError('required') && opForm.get('symptoms')?.touched" class="error-message">
+      Symptoms are required
+    </div>
+    <div *ngIf="opForm.get('symptoms')?.hasError('maxlength') && opForm.get('symptoms')?.touched" class="error-message">
+      Symptoms must not exceed 1000 characters
+    </div>
+
+    <div class="form-row">
+      <label for="diagnosis" class="form-label">Diagnosis <span class="required">*</span></label>
+      <textarea id="diagnosis" formControlName="diagnosis" rows="4" class="form-textarea" 
+        [class.invalid]="opForm.get('diagnosis')?.invalid && opForm.get('diagnosis')?.touched"></textarea>
+    </div>
+    <div *ngIf="opForm.get('diagnosis')?.hasError('required') && opForm.get('diagnosis')?.touched" class="error-message">
+      Diagnosis is required
+    </div>
+    <div *ngIf="opForm.get('diagnosis')?.hasError('maxlength') && opForm.get('diagnosis')?.touched" class="error-message">
+      Diagnosis must not exceed 1000 characters
+    </div>
+
+    <div class="form-row">
+      <label for="treatment" class="form-label">Treatment <span class="required">*</span></label>
+      <textarea id="treatment" formControlName="treatment" rows="4" class="form-textarea" 
+        [class.invalid]="opForm.get('treatment')?.invalid && opForm.get('treatment')?.touched"></textarea>
+    </div>
+    <div *ngIf="opForm.get('treatment')?.hasError('required') && opForm.get('treatment')?.touched" class="error-message">
+      Treatment is required
+    </div>
+    <div *ngIf="opForm.get('treatment')?.hasError('maxlength') && opForm.get('treatment')?.touched" class="error-message">
+      Treatment must not exceed 1000 characters
+    </div>
+
+    <div class="form-row">
+      <label for="remarks" class="form-label">Remarks</label>
+      <textarea id="remarks" formControlName="remarks" rows="4" class="form-textarea" 
+        [class.invalid]="opForm.get('remarks')?.invalid && opForm.get('remarks')?.touched"></textarea>
+    </div>
+    <div *ngIf="opForm.get('remarks')?.hasError('maxlength') && opForm.get('remarks')?.touched" class="error-message">
+      Remarks must not exceed 500 characters
+    </div>
+
+    <div class="form-row">
+      <label for="prescriptionId" class="form-label">Prescription</label>
+      <select id="prescriptionId" formControlName="prescriptionId" class="form-select" 
+        [class.invalid]="opForm.get('prescriptionId')?.invalid && opForm.get('prescriptionId')?.touched"
+        [disabled]="!opForm.get('appointmentId')?.value">
+        <option value="" selected>Select Prescription </option>
+        <option *ngFor="let prescription of prescriptions" [value]="prescription.id">
+          {{ prescription.id }} - {{ prescription.medication }} (Created: {{ prescription.createdAt | date:'dd-MM-yyyy' }})
+        </option>
+      </select>
+    </div>
+    <div *ngIf="opForm.get('prescriptionId')?.hasError('pattern') && opForm.get('prescriptionId')?.touched" class="error-message">
+      Please select a valid prescription
+    </div>
+
+    <div class="form-row">
+      <label for="invoiceId" class="form-label">Invoice</label>
+      <select id="invoiceId" formControlName="invoiceId" class="form-select" 
+        [class.invalid]="opForm.get('invoiceId')?.invalid && opForm.get('invoiceId')?.touched"
+        [disabled]="!opForm.get('appointmentId')?.value">
+        <option value="" selected>Select Invoice </option>
+        <option *ngFor="let invoice of invoices" [value]="invoice.id">
+          {{ invoice.id }} - ₹{{ invoice.consultationFee }} (Created: {{ invoice.createdAt | date:'dd-MM-yyyy' }})
+        </option>
+      </select>
+    </div>
+    <div *ngIf="opForm.get('invoiceId')?.hasError('pattern') && opForm.get('invoiceId')?.touched" class="error-message">
+      Please select a valid invoice
+    </div>
+
+    <div class="button-container">
+      <button type="submit" class="btn btn-success" [disabled]="opForm.invalid || isLoading">Create OP Form</button>
+      <button type="button" class="btn btn-cancel" (click)="cancel()" [disabled]="isLoading">Cancel</button>
+    </div>
+  </form>
+</div>

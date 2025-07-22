@@ -1,0 +1,253 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  background: url(../assests/images/Hospital.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #263238;
+  color: white;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-header img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+}
+
+.sidebar-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Main Sidebar Navigation (Standalone Links) */
+.sidebar-nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff200;
+}
+
+/* Sub-Navbar for Dropdowns */
+.sub-navbar {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown container */
+.sub-navbar .dropdown {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Dropdown header */
+.sub-navbar .dropdown-header {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: transparent;
+  border-radius: 6px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.sub-navbar .dropdown-header:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff200;
+}
+
+/* Dropdown content - hidden by default */
+.sub-navbar .dropdown-content {
+  display: none;
+  background: #263238; /* Keep the same background as the sidebar */
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-left: 20px; /* Indent the dropdown content for visual hierarchy */
+}
+
+/* Show dropdown content on hover */
+.sub-navbar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Links inside dropdown content */
+.sub-navbar .dropdown-content a {
+  display: block;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin: 2px 0;
+}
+
+.sub-navbar .dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff200;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+/* Topbar */
+.topbar {
+  background: linear-gradient(90deg, #00796b 0%, #26a69a 100%);
+  padding: 12px 20px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: relative;
+  user-select: none;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #a7ffeb;
+  background-color: #004d40;
+}
+
+.dropdown-arrow {
+  font-size: 12px;
+  margin-left: 4px;
+  user-select: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #263238;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 10;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  color: #a7ffeb;
+  font-weight: 600;
+  cursor: default;
+  border-bottom: 1px solid #00796b;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu li a {
+  color: #a7ffeb;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #26a69a;
+  color: #004d40;
+  border-radius: 6px;
+}
+
+/* Auth buttons (Login/Register) */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-button {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Page Content */
+.page-content {
+  padding: 25px;
+  overflow-y: auto;
+  flex: 1;
+  background: url(../assests/images/Hospital.jpeg) no-repeat center center;
+ 
+  background-size: cover;
+  text-align: center;
+}
+
+.page-content h1 {
+  color: green;
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

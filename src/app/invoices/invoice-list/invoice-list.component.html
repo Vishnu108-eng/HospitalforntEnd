@@ -1,0 +1,41 @@
+<div class="invoice-container">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">My Invoices</h2>
+      <button class="btn-primary btn-add" (click)="navigateToAddInvoice()">Add Invoice</button>
+    </div>
+
+    <div class="card-content">
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <ng-container *ngIf="invoices.length > 0; else noInvoices">
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let invoice of invoices">
+              <td>{{ invoice.patientName || 'Loading...' }}</td>
+              <td>{{ invoice.doctorName || 'Loading...' }}</td>
+              <td>{{ invoice.createdAt | date:'dd-MM-yyyy' }}</td>
+              <td>{{ invoice.consultationFee | currency:'INR' }}</td>
+              <td>
+                <button class="btn btn-info btn-sm" (click)="downloadInvoice(invoice.id)">Download PDF</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+      <ng-template #noInvoices>
+        <p class="no-invoices">No invoices available.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="dialog-content">
+  <h2 class="dialog-title">Edit Appointment</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+      <label class="form-label" for="doctorId">Doctor</label>
+      <select id="doctorId" formControlName="doctorId" class="form-select">
+        <option value="">-- Select Doctor --</option>
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">
+          {{ doctor.fullName }} ({{ doctor.specialization }})
+        </option>
+      </select>
+    </div>
+    <div class="form-error" *ngIf="editForm.get('doctorId')?.hasError('required')">Doctor is required</div>
+
+    <div class="form-row">
+      <label class="form-label" for="patientName">Patient Name</label>
+      <input id="patientName" type="text" formControlName="patientName" class="form-input" />
+    </div>
+    <div class="form-error" *ngIf="editForm.get('patientName')?.hasError('required')">Patient Name is required</div>
+    <div class="form-error" *ngIf="editForm.get('patientName')?.hasError('minlength') && !editForm.get('patientName')?.hasError('required')">
+      Patient Name must be at least 3 characters
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="patientEmail">Patient Email</label>
+      <input id="patientEmail" type="email" formControlName="patientEmail" class="form-input" />
+    </div>
+    <div class="form-error" *ngIf="editForm.get('patientEmail')?.hasError('required')">Patient Email is required</div>
+    <div class="form-error" *ngIf="editForm.get('patientEmail')?.hasError('email') && !editForm.get('patientEmail')?.hasError('required')">
+      Invalid email format
+    </div>
+
+    <div class="form-row phone-input-container">
+      <div class="form-group country-code-group">
+        <label class="form-label" for="countryCode">Country Code</label>
+        <select id="countryCode" formControlName="countryCode" class="form-select">
+          <option *ngFor="let country of countries" [value]="country.code">
+            {{ country.code }} ({{ country.name }})
+          </option>
+        </select>
+        <div class="form-error" *ngIf="editForm.get('countryCode')?.hasError('required')">Country Code is required</div>
+      </div>
+
+      <div class="form-group phone-number-group">
+        <label class="form-label" for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber" class="form-input" />
+        <div class="form-error" *ngIf="editForm.get('phoneNumber')?.hasError('required')">Phone Number is required</div>
+        <div class="form-error" *ngIf="editForm.get('phoneNumber')?.hasError('pattern') && !editForm.get('phoneNumber')?.hasError('required')">
+          Phone Number must be 10 digits (e.g., 9008724735)
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="appointmentDate">Appointment Date</label>
+      <input id="appointmentDate" type="date" formControlName="appointmentDate" class="form-input" />
+    </div>
+    <div class="form-error" *ngIf="editForm.get('appointmentDate')?.hasError('required')">Appointment Date is required</div>
+
+    <div class="form-row">
+      <label class="form-label" for="appointmentTime">Appointment Time (e.g., 09:00 AM to 10:00 AM)</label>
+      <input id="appointmentTime" type="text" formControlName="appointmentTime" class="form-input" />
+    </div>
+    <div class="form-error" *ngIf="editForm.get('appointmentTime')?.hasError('required')">Appointment Time is required</div>
+    <div class="form-error" *ngIf="editForm.get('appointmentTime')?.hasError('pattern') && !editForm.get('appointmentTime')?.hasError('required')">
+      Invalid time format (e.g., 09:00 AM to 10:00 AM)
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="status">Status</label>
+      <select id="status" formControlName="status" class="form-select">
+        <option value="Confirmed">Confirmed</option>
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+    <div class="form-error" *ngIf="editForm.get('status')?.hasError('required')">Status is required</div>
+
+    <div class="dialog-actions">
+      <button type="submit" class="btn save-btn" [disabled]="editForm.invalid">Save</button>
+      <button type="button" class="btn cancel-btn" (click)="onCancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>
+

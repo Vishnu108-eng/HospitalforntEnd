@@ -1,0 +1,105 @@
+<div class="appointment-container">
+  <h2 class="text-center heading">My Appointments</h2>
+
+ <form class="filter-form">
+  <div class="filter-group">
+    <label for="searchName">Patient Name:</label>
+    <input
+      id="searchName"
+      type="text"
+      [(ngModel)]="searchText"
+      name="searchName"
+      placeholder="Search by patient name"
+      class="form-control search-box"
+    />
+  </div>
+
+  <div class="filter-group">
+    <label for="doctorId">Doctor:</label>
+    <select
+      id="doctorId"
+      [(ngModel)]="selectedDoctorId"
+      name="doctorId"
+      class="form-control doctor-select"
+    >
+      <option value="">-- Filter by Doctor --</option>
+      <option *ngFor="let doc of doctorList" [value]="doc.id">
+        {{ doc.fullName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="appointmentDate">Appointment Date:</label>
+    <input
+      id="appointmentDate"
+      type="date"
+      [(ngModel)]="appointmentDate"
+      name="appointmentDate"
+      class="form-control appointment-date"
+    />
+  </div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-info" (click)="applyFilters()">Filter</button>
+  &nbsp;
+  <button type="button" class="btn btn-secondary" (click)="resetFilters()">Reset</button>
+</form>
+
+  <button class="btn btn-success btn-book" (click)="openBookingForm()">Book Appointment</button>
+
+  <table class="appointments-table table-bordered">
+    <thead>
+      <tr>
+        <th>Doctor</th>
+        <th>Patient Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let appointment of filteredAppointments"
+        [class.cancelled]="appointment.status === 'Cancelled'"
+      >
+        <td>{{ appointment.doctor?.fullName }}</td>
+        <td>{{ appointment.patientName }}</td>
+        <td>{{ appointment.patientEmail }}</td>
+        <td>{{ appointment.patientPhone }}</td>
+        <td>{{ appointment.appointmentDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ appointment.appointmentTime }}</td>
+        <td
+          [ngClass]="{
+            'status-confirmed': appointment.status === 'Confirmed',
+            'status-pending': appointment.status === 'Pending',
+            'status-completed': appointment.status === 'Completed',
+            'status-cancelled': appointment.status === 'Cancelled'
+          }"
+        >
+          {{ appointment.status }}
+        </td>
+        <td>
+          <button
+            class="btn btn-primary"
+            (click)="editAppointment(appointment)"
+            [disabled]="appointment.status === 'Cancelled'"
+            title="Edit"
+          >
+            ✏️
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="cancelAppointment(appointment.id)"
+            [disabled]="appointment.status === 'Cancelled'"
+            title="Cancel"
+          >
+            ❌
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,77 @@
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" *ngIf="authService.isLoggedIn()">
+    <div class="sidebar-header">
+      <img src="/assests/images/Logo.jpeg" alt="Hospital Logo" />
+     
+      <h2>Venkateswara TechMed Hospital</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+    </nav>
+    <nav class="sub-navbar">
+      
+      <div class="dropdown">
+        <div class="dropdown-header">🩺 Doctors</div>
+        <div class="dropdown-content">
+          <a routerLink="/doctors/add" routerLinkActive="active">Add Doctor</a>
+          <a routerLink="/doctors" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Doctor List</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-header">📅 Appointments</div>
+        <div class="dropdown-content">
+          <a routerLink="/appointments/book" routerLinkActive="active">Book Appointment</a>
+          <a routerLink="/appointments" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Appointment List</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-header">💊 Prescriptions</div>
+        <div class="dropdown-content">
+          <a routerLink="/prescriptions/add" routerLinkActive="active">Add Prescription</a>
+          <a routerLink="/prescriptions" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Prescription List</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-header">💰 Invoices</div>
+        <div class="dropdown-content">
+          <a routerLink="/invoices/add" routerLinkActive="active">Add Invoice</a>
+          <a routerLink="/invoices" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Invoice List</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-header">📝 OP Forms</div>
+        <div class="dropdown-content">
+          <a routerLink="/op-forms/add" routerLinkActive="active">Add OP Form</a>
+          <a routerLink="/op-forms" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">OP Form List</a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div *ngIf="authService.isLoggedIn()" class="user-menu" (click)="toggleUserDropdown()">
+        <img src="/assests/images/Profile.PNG" class="avatar" alt="User Avatar" />
+         <li>Profile</li>
+        <span class="dropdown-arrow">▼</span>
+        <ul class="dropdown-menu" [ngClass]="{ 'show': userDropdownOpen }">
+           <span>{{ authService.getUserEmail() }}</span>
+          <li><a href="#" (click)="logout($event)">Logout</a></li>
+        </ul>
+      </div>
+      <div class="auth-buttons" *ngIf="!authService.isLoggedIn()">
+        <a routerLink="/login" class="auth-button">Login</a>
+        <a routerLink="/register" class="auth-button">Register</a>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+      <h1>🌟 Welcome to Venkateswara TechMed Hospital 🌟</h1>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
