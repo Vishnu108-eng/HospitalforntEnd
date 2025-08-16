@@ -41,38 +41,7 @@ export class DoctorFormComponent implements OnInit {
   selectedCountryFlag: string | null = null;
   selectedCountryName: string | null = null;
   submitted: boolean = false;
-  countries: Country[] = [
-    { code: '+61', name: 'Australia', flag: 'https://flagcdn.com/16x12/au.png' },
-    { code: '+32', name: 'Belgium', flag: 'https://flagcdn.com/16x12/be.png' },
-    { code: '+55', name: 'Brazil', flag: 'https://flagcdn.com/16x12/br.png' },
-    { code: '+20', name: 'Egypt', flag: 'https://flagcdn.com/16x12/eg.png' },
-    { code: '+33', name: 'France', flag: 'https://flagcdn.com/16x12/fr.png' },
-    { code: '+30', name: 'Greece', flag: 'https://flagcdn.com/16x12/gr.png' },
-    { code: '+49', name: 'Germany', flag: 'https://flagcdn.com/16x12/de.png' },
-    { code: '+39', name: 'Italy', flag: 'https://flagcdn.com/16x12/it.png' },
-    { code: '+62', name: 'Indonesia', flag: 'https://flagcdn.com/16x12/id.png' },
-    { code: '+1', name: 'Canada', flag: 'https://flagcdn.com/16x12/ca.png' },
-    { code: '+1', name: 'USA', flag: 'https://flagcdn.com/16x12/us.png' },
-    { code: '+86', name: 'China', flag: 'https://flagcdn.com/16x12/cn.png' },
-    { code: '+91', name: 'India', flag: 'https://flagcdn.com/16x12/in.png' },
-    { code: '+64', name: 'New Zealand', flag: 'https://flagcdn.com/16x12/nz.png' },
-    { code: '+47', name: 'Norway', flag: 'https://flagcdn.com/16x12/no.png' },
-    { code: '+92', name: 'Pakistan', flag: 'https://flagcdn.com/16x12/pk.png' },
-    { code: '+351', name: 'Portugal', flag: 'https://flagcdn.com/16x12/pt.png' },
-    { code: '+34', name: 'Spain', flag: 'https://flagcdn.com/16x12/es.png' },
-    { code: '+82', name: 'South Korea', flag: 'https://flagcdn.com/16x12/kr.png' },
-    { code: '+27', name: 'South Africa', flag: 'https://flagcdn.com/16x12/za.png' },
-    { code: '+41', name: 'Switzerland', flag: 'https://flagcdn.com/16x12/ch.png' },
-    { code: '+46', name: 'Sweden', flag: 'https://flagcdn.com/16x12/se.png' },
-    { code: '+60', name: 'Malaysia', flag: 'https://flagcdn.com/16x12/my.png' },
-    { code: '+81', name: 'Japan', flag: 'https://flagcdn.com/16x12/jp.png' },
-    { code: '+7', name: 'Russia', flag: 'https://flagcdn.com/16x12/ru.png' },
-    { code: '+98', name: 'Iran', flag: 'https://flagcdn.com/16x12/ir.png' },
-    { code: '+31', name: 'Netherlands', flag: 'https://flagcdn.com/16x12/nl.png' },
-    { code: '+45', name: 'Denmark', flag: 'https://flagcdn.com/16x12/dk.png' },
-    { code: '+44', name: 'UK', flag: 'https://flagcdn.com/16x12/gb.png' },
-    { code: '+971', name: 'UAE', flag: 'https://flagcdn.com/16x12/ae.png' }
-  ];
+  countries: Country[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -112,6 +81,14 @@ export class DoctorFormComponent implements OnInit {
       this.updateSelectedCountryFlag();
     });
     this.doctorForm.get('phoneNumber')?.valueChanges.subscribe(() => this.updatePhoneNumberFull());
+
+  this.apiService.getCountries().subscribe({
+  next: (data) => {
+    this.countries = data;
+    this.updateSelectedCountryFlag(); // ✅ Call here after countries are loaded
+  },
+  error: (err) => console.error('Error loading countries', err)
+});
   }
 
   loadDoctor(id: number): void {
@@ -156,6 +133,7 @@ export class DoctorFormComponent implements OnInit {
   }
 
   updateSelectedCountryFlag(): void {
+    debugger;
     const countryCode = this.doctorForm.get('countryCode')?.value;
     const country = this.countries.find(c => c.code === countryCode);
     if (country) {

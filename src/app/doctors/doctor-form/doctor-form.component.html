@@ -29,10 +29,13 @@
         <div class="country-select-wrapper">
           <select id="countryCode" formControlName="countryCode" (change)="updatePhoneValidator()">
             <option *ngFor="let country of countries" [value]="country.code">
-              <img [src]="country.flag" [alt]="country.name + ' flag'" class="flag-icon" /> {{ country.code }}
+              <!-- <img [src]="country.flag" [alt]="country.name + ' flag'" class="flag-icon" /> -->
+               <img [src]="country.flag" width="20" height="15" style="margin-right:8px;" />
+                ({{ country.code }})
             </option>
           </select>
-          <img [src]="selectedCountryFlag" [alt]="selectedCountryName + ' flag'" class="flag-icon selected-flag" *ngIf="selectedCountryFlag" />
+          <img [src]="selectedCountryFlag" [alt]="selectedCountryName + ' flag'"
+           class="flag-icon selected-flag" *ngIf="selectedCountryFlag" />
         </div>
         <div class="error" *ngIf="(doctorForm.get('countryCode')?.touched || submitted) && doctorForm.get('countryCode')?.hasError('required')">Country Code is required</div>
       </div>

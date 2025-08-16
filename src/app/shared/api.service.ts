@@ -11,6 +11,7 @@ import { Prescription, PrescriptionCreate } from './models/prescription';
 import { RegisterViewModel } from './models/register-view-model';
 import { ForgotPasswordViewModel } from './models/forgot-password-view-model';
 import { ResetPasswordViewModel } from './models/reset-password-view-model';
+import { Country } from './models/country.model';
 
 interface AuthResponse {
   username: string | undefined;
@@ -118,6 +119,10 @@ export class ApiService {
 
   downloadPrescription(id: number): Observable<Blob> {
     return this.http.get(`${this.apiUrl}/Prescription/download/${id}`, { headers: this.getAuthHeaders(), responseType: 'blob' }).pipe(catchError(this.handleError));
+  }
+  
+   getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.apiUrl}/Auth`);
   }
 
   // Invoice APIs
