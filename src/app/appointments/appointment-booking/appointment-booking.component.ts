@@ -4,6 +4,9 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../shared/api.service';
 import { Doctor } from '../../shared/models/doctor';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from '../../shared/success-dialog/success-dialog.component';
+
 
 interface Country {
   code: string;
@@ -64,7 +67,8 @@ export class AppointmentBookingComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.appointmentForm = this.fb.group({
       doctorId: ['', Validators.required],
@@ -148,8 +152,14 @@ export class AppointmentBookingComponent implements OnInit {
 
       this.apiService.bookAppointment(payload).subscribe({
         next: () => {
-          alert('Appointment booked successfully!');
-          this.router.navigate(['/appointments']);
+          const dialogRef = this.dialog.open(SuccessDialogComponent, {
+            width: '400px',
+            data: payload  // pass entire appointment data
+          });
+
+          dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/appointments']);
+          });
         },
         error: (error: any) => {
           console.error('Error booking appointment', error);

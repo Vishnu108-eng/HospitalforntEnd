@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { SuccessDialogComponent } from './shared/success-dialog/success-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -51,6 +52,7 @@ export function jwtOptionsFactory() {
     MatCheckboxModule,
     AppComponent,
     NgxIntlTelInputModule,
+    SuccessDialogComponent,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
